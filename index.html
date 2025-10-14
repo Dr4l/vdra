@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragos Vrabie</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon/android-chrome-512x512.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%);
+            color: #f3f4f6;
+            min-height: 100vh;
+        }
+        
+        .profile-img {
+            background-color: #4c1d95;
+            color: #ede9fe;
+            font-size: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-btn {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            background-color: #1f2937;
+            border-color: #374151;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+            border-color: #a78bfa;
+        }
+        
+        .skill-badge {
+            transition: all 0.3s ease;
+            background-color: #4c1d95;
+            color: #e5e7eb;
+        }
+        
+        .skill-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-bg {
+            background-color: #1f2937;
+            border-color: #374151;
+        }
+        
+        .text-primary {
+            color: #a78bfa;
+        }
+        
+        .text-secondary {
+            color: #e5e7eb;
+        }
+        
+        .text-tertiary {
+            color: #9ca3af;
+        }
+        
+        .badge-bg {
+            background-color: #4c1d95;
+            color: #e5e7eb;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 1rem;
+        }
+        
+        .modal-content {
+            background-color: #1f2937;
+            border-radius: 0.5rem;
+            border: 1px solid #374151;
+            max-width: 700px;
+            margin: 2rem auto;
+            animation: modalFadeIn 0.3s ease;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #4c1d95;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .modal-close:hover {
+            background-color: #6d28d9;
+            transform: scale(1.1);
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+        
+        .view-project {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background-color: rgba(76, 29, 149, 0.8);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .view-project {
+            opacity: 1;
+        }
+        
+        .language-badge {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .language-level {
+            height: 0.5rem;
+            background-color: #4c1d95;
+            border-radius: 9999px;
+            margin-left: 0.5rem;
+            flex-grow: 1;
+        }
+        
+        .org-link {
+            color: #a78bfa;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .org-link:hover {
+            color: #c4b5fd;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-12">
+        <div class="bg-gray-800 rounded-xl shadow-2xl overflow-hidden max-w-5xl mx-auto">
+            <!-- Header Section -->
+            <div class="bg-gradient-to-r from-purple-900 to-purple-700 p-8 text-white">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="profile-img w-40 h-40 rounded-full mb-6 md:mb-0 md:mr-8 flex-shrink-0">
+                        <span>DV</span>
+                    </div>
+                    <div>
+                        <h1 class="text-4xl font-bold mb-2">Dragos Vrabie</h1>
+                        <h2 class="text-xl text-purple-100 mb-1">Computer Engineering Student</h2>
+                        <p class="text-sm text-purple-200 mb-4">@ Polytechnic University of Bucharest</p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="https://www.linkedin.com/in/vrabie-dragos/" target="_blank" class="social-btn bg-purple-700 hover:bg-purple-800 text-white px-4 py-2 rounded-lg flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+                                </svg>
+                                LinkedIn
+                            </a>
+                            <a href="https://github.com/Dr4l" target="_blank" class="social-btn bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-lg flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="p-8">
+                <!-- About Me Section -->
+                <section class="mb-10">
+                    <h3 class="text-2xl font-bold text-primary mb-4">About Me</h3>
+                    <p class="text-secondary leading-relaxed">
+                        Passionate and dedicated Automation and Computer Science student with proven leadership experience in student organizations such as
+                        <a href="https://lsacbucuresti.ro" target="_blank" class="org-link">LSAC</a> and 
+                        <a href="https://www.best.eu.org" target="_blank" class="org-link">BEST</a>. Skilled in organizing events, leading teams, and fostering collaboration across multicultural environments. Experienced in web development, robotics, software development and automated testing,
+                        with a strong commitment to continuous learning and personal growth. In my personal time, I like to take 
+                        photos, travel and play sports.
+                    </p>
+                </section>
+
+                <!-- Skills Section -->
+                <section class="mb-10">
+                    <h3 class="text-2xl font-bold text-primary mb-4">Skills</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Technical Skills Column -->
+                        <div>
+                            <h4 class="text-xl font-semibold text-primary mb-3">Technical Skills</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-badge px-3 py-1 rounded-full font-medium">C/C++</span>
+                                <span class="skill-badge px-3 py-1 rounded-full font-medium">Python</span>
+                                <span class="skill-badge px-3 py-1 rounded-full font-medium">Java</span>
+                                <span class="skill-badge px-3 py-1 rounded-full font-medium">JavaScript</span>
+                                <span class="skill-badge px-3 py-1 rounded-full font-medium">HTML/CSS</span>
+                                <span class="skill-badge px-3 py-1 rounded-full font-medium">Arduino</span>
+                                <span class="skill-badge px-3 py-1 rounded-full font-medium">Raspberry Pi</span>
+                                <span class="skill-badge px-3 py-1 rounded-full font-medium">Git</span>
+                                <span class="skill-badge px-3 py-1 rounded-full font-medium">Linux</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Languages and Soft Skills Column -->
+                        <div>
+                            <h4 class="text-xl font-semibold text-primary mb-3">Languages & Soft Skills</h4>
+                            <div class="mb-4">
+                                <div class="language-badge">
+                                    <span class="text-secondary w-24">Romanian</span>
+                                    <div class="language-level w-full">
+                                        <div class="h-full bg-purple-400 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                    <span class="text-tertiary ml-2">C2</span>
+                                </div>
+                                <div class="language-badge">
+                                    <span class="text-secondary w-24">English</span>
+                                    <div class="language-level w-full">
+                                        <div class="h-full bg-purple-400 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                    <span class="text-tertiary ml-2">C2</span>
+                                </div>
+                                <div class="language-badge">
+                                    <span class="text-secondary w-24">German</span>
+                                    <div class="language-level w-full">
+                                        <div class="h-full bg-purple-400 rounded-full" style="width: 30%"></div>
+                                    </div>
+                                    <span class="text-tertiary ml-2">A2</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-badge px-3 py-1 rounded-full font-medium">Teamwork</span>
+                                <span class="skill-badge px-3 py-1 rounded-full font-medium">Time Management</span>
+                                <span class="skill-badge px-3 py-1 rounded-full font-medium">Effective Communication</span>
+                                <span class="skill-badge px-3 py-1 rounded-full font-medium">Critical Thinking</span>
+                                <a href="/photos.html" class="skill-badge px-3 py-1 rounded-full font-medium">Photography</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Section -->
+                <section class="mb-10">
+                    <h3 class="text-2xl font-bold text-primary mb-4">Projects</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="project-card rounded-lg p-6 border shadow-sm relative" onclick="openModal('investment-calculator')">
+                        <h4 class="text-xl font-semibold text-primary mb-2">Investment Calculator with Analytics</h4>
+                        <p class="text-tertiary mb-4">Comprehensive Java investment calculator featuring compound interest calculations, interactive growth charts, pie chart breakdowns, and detailed financial schedules. Supports multiple compounding frequencies, periodic contributions/withdrawals, and includes automated testing with CI/CD pipeline.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge-bg text-xs px-2 py-1 rounded">Java 11+</span>
+                            <span class="badge-bg text-xs px-2 py-1 rounded">Swing GUI</span>
+                            <span class="badge-bg text-xs px-2 py-1 rounded">JFreeChart</span>
+                            <span class="badge-bg text-xs px-2 py-1 rounded">BigDecimal Precision</span>
+                            <span class="badge-bg text-xs px-2 py-1 rounded">JUnit Testing</span>
+                            <span class="badge-bg text-xs px-2 py-1 rounded">GitHub Actions</span>
+                            <span class="badge-bg text-xs px-2 py-1 rounded">Maven</span>
+                            <span class="badge-bg text-xs px-2 py-1 rounded">Financial Analytics</span>
+                        </div>
+            </div>
+            <span class="view-project">View Details</span>
+                </section>
+
+                <!-- Contact Section -->
+                <section>
+                    <h3 class="text-2xl font-bold text-primary mb-4">Contact</h3>
+                    <div class="card-bg rounded-lg p-6 border">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <a href="mailto:dragosvrabie@proton.me" class="text-secondary hover:text-primary transition-colors">dragosvrabie@proton.me</a>
+                        </div>
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-secondary">Bucharest, Romania</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Footer -->
+            <div class="card-bg p-6 border-t text-center text-tertiary">
+                <p>© 2025 Dragos Vrabie. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modals -->
+    <div id="investment-calculator" class="modal">
+    <div class="modal-content">
+        <div class="project-image" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100%&quot; height=&quot;100%&quot; viewBox=&quot;0 0 800 400&quot;><rect fill=&quot;%234ade80&quot; width=&quot;800&quot; height=&quot;400&quot;/><g fill-opacity=&quot;0.3&quot;><path fill=&quot;%23065f46&quot; d=&quot;M100 350 L200 300 L300 250 L400 200 L500 150 L600 100 L700 80 L700 350 Z&quot;/><circle fill=&quot;%23059669&quot; cx=&quot;400&quot; cy=&quot;200&quot; r=&quot;60&quot;/><text x=&quot;400&quot; y=&quot;210&quot; text-anchor=&quot;middle&quot; fill=&quot;white&quot; font-size=&quot;24&quot; font-weight=&quot;bold&quot;>$</text></g></svg>');"></div>
+        <div class="p-6">
+            <h3 class="text-2xl font-bold text-primary mb-2">Investment Calculator with Advanced Analytics</h3>
+            <p class="text-secondary mb-4">A comprehensive Java Swing application for calculating compound interest investments with interactive charts, detailed schedules, multi-currency support, and automated testing infrastructure.</p>
+            
+            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Project Overview</h4>
+            <p class="text-secondary mb-4">
+                This investment calculator provides users with powerful tools to plan their financial future. It features a modern GUI built with Java Swing and FlatLaf look-and-feel, offering comprehensive investment calculations with visual representations and detailed breakdowns. The application supports various compounding frequencies, contribution schedules, negative contributions (withdrawals), and includes a robust testing suite with CI/CD pipeline.
+            </p>
+            
+            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Key Features</h4>
+            <ul class="list-disc list-inside text-secondary mb-4">
+                <li>Compound interest calculations with multiple frequencies (daily, weekly, monthly, quarterly, annually)</li>
+                <li>Interactive investment growth charts and pie chart breakdowns showing final amount composition</li>
+                <li>Support for negative contributions (withdrawals) to model money taken out of investments</li>
+                <li>Support for regular contributions with flexible timing (beginning/end of period)</li>
+                <li>Multi-currency support (USD, EUR, GBP, JPY, CAD, AUD)</li>
+                <li>Comprehensive annual and monthly investment schedules with dynamic labeling</li>
+                <li>Chart export functionality (PNG/JPEG) with full-screen viewing mode</li>
+                <li>Automated test suite with detailed input/output validation</li>
+                <li>GitHub Actions CI/CD pipeline for continuous integration</li>
+                <li>Comprehensive documentation including calculation methodology</li>
+            </ul>
+            
+            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Technical Implementation</h4>
+            <p class="text-secondary mb-4">
+                The application uses a modular architecture with separate components for calculations, charting, and UI. It implements the Model-View-Controller pattern with dedicated classes for investment engine calculations, chart generation using JFreeChart, and a clean Swing-based user interface. The calculation engine uses BigDecimal arithmetic for financial precision and includes comprehensive validation against known mathematical formulas.
+            </p>
+            
+            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Technologies Used</h4>
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="badge-bg text-xs px-2 py-1 rounded">Java 11+</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">Java Swing</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">FlatLaf Look and Feel</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">JFreeChart</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">BigDecimal Precision</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">Maven Build System</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">JUnit 5 Testing</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">GitHub Actions CI/CD</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">MVC Architecture</span>
+            </div>
+            
+            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Advanced Features</h4>
+            <ul class="list-disc list-inside text-secondary mb-4">
+                <li><strong>Dual Chart System:</strong> Growth over time charts and pie charts showing investment breakdown (starting amount, contributions, interest earned)</li>
+                <li><strong>Withdrawal Support:</strong> Handle negative contributions with appropriate UI feedback and calculations</li>
+                <li><strong>Precision Calculations:</strong> Uses BigDecimal with 10 decimal places to avoid rounding errors in financial calculations</li>
+                <li><strong>Comprehensive Testing:</strong> Automated test suite validating calculations against known formulas with detailed input/expected/actual output</li>
+                <li><strong>CI/CD Pipeline:</strong> GitHub Actions workflow for automated testing on every push and pull request</li>
+                <li><strong>Documentation:</strong> Detailed explanation of calculation differences between investment calculators and methodology transparency</li>
+                <li><strong>Export Capabilities:</strong> Save high-resolution chart images for reports and presentations</li>
+                <li><strong>Professional Architecture:</strong> Clean separation of concerns with testable, maintainable code structure</li>
+            </ul>
+            
+            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Quality Assurance</h4>
+            <ul class="list-disc list-inside text-secondary mb-4">
+                <li><strong>Automated Testing:</strong> Comprehensive JUnit test suite covering edge cases and mathematical validation</li>
+                <li><strong>Continuous Integration:</strong> GitHub Actions pipeline ensuring code quality on every commit</li>
+                <li><strong>Calculation Transparency:</strong> Detailed documentation explaining methodology and potential discrepancies with other calculators</li>
+                <li><strong>Input Validation:</strong> Robust error handling and user input validation with clear error messages</li>
+            </ul>
+            
+            <div class="flex justify-end mt-6">
+                <a href="https://github.com/Dr4l/investment-calculator" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">View GitHub Repository</a>
+            </div>
+        </div>
+        <div class="modal-close" onclick="closeModal('investment-calculator')">×</div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.getElementsByClassName('modal');
+                for (let i = 0; i < modals.length; i++) {
+                    if (modals[i].style.display === 'block') {
+                        modals[i].style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'964df264b202bc1a',t:'MTc1MzQ3MDUxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
