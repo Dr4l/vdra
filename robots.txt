@@ -1,0 +1,8 @@
+# Allow all crawlers and point to the sitemap
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://vdra.dev/sitemap.xml
+# Preferred host (optional)
+Host: vdra.dev
