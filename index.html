@@ -319,20 +319,36 @@
                     <h3 class="text-2xl font-bold text-primary mb-4">Projects</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="project-card rounded-lg p-6 border shadow-sm relative" onclick="openModal('investment-calculator')">
-                        <h4 class="text-xl font-semibold text-primary mb-2">Investment Calculator with Analytics</h4>
-                        <p class="text-tertiary mb-4">Comprehensive Java investment calculator featuring compound interest calculations, interactive growth charts, pie chart breakdowns, and detailed financial schedules. Supports multiple compounding frequencies, periodic contributions/withdrawals, and includes automated testing with CI/CD pipeline.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="badge-bg text-xs px-2 py-1 rounded">Java 11+</span>
-                            <span class="badge-bg text-xs px-2 py-1 rounded">Swing GUI</span>
-                            <span class="badge-bg text-xs px-2 py-1 rounded">JFreeChart</span>
-                            <span class="badge-bg text-xs px-2 py-1 rounded">BigDecimal Precision</span>
-                            <span class="badge-bg text-xs px-2 py-1 rounded">JUnit Testing</span>
-                            <span class="badge-bg text-xs px-2 py-1 rounded">GitHub Actions</span>
-                            <span class="badge-bg text-xs px-2 py-1 rounded">Maven</span>
-                            <span class="badge-bg text-xs px-2 py-1 rounded">Financial Analytics</span>
+                            <h4 class="text-xl font-semibold text-primary mb-2">Investment Calculator with Analytics</h4>
+                            <p class="text-tertiary mb-4">Comprehensive Java investment calculator featuring compound interest calculations, interactive growth charts, pie chart breakdowns, and detailed financial schedules. Supports multiple compounding frequencies, periodic contributions/withdrawals, and includes automated testing with CI/CD pipeline.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge-bg text-xs px-2 py-1 rounded">Java 11+</span>
+                                <span class="badge-bg text-xs px-2 py-1 rounded">Swing GUI</span>
+                                <span class="badge-bg text-xs px-2 py-1 rounded">JFreeChart</span>
+                                <span class="badge-bg text-xs px-2 py-1 rounded">BigDecimal Precision</span>
+                                <span class="badge-bg text-xs px-2 py-1 rounded">JUnit Testing</span>
+                                <span class="badge-bg text-xs px-2 py-1 rounded">GitHub Actions</span>
+                                <span class="badge-bg text-xs px-2 py-1 rounded">Maven</span>
+                                <span class="badge-bg text-xs px-2 py-1 rounded">Financial Analytics</span>
+                            </div>
+                            <span class="view-project">View Details</span>
                         </div>
-            </div>
-            <span class="view-project">View Details</span>
+
+                        <div class="project-card rounded-lg p-6 border shadow-sm relative" onclick="openModal('investment-spear')">
+                            <h4 class="text-xl font-semibold text-primary mb-2">Investment Spear</h4>
+                            <p class="text-tertiary mb-4">Always-on Python trading system using Yahoo Finance news, local Ollama sentiment analysis, and Alpaca paper trading. Includes a Flask dashboard and conservative cash-only risk management.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge-bg text-xs px-2 py-1 rounded">Python 3.11+</span>
+                                <span class="badge-bg text-xs px-2 py-1 rounded">Flask</span>
+                                <span class="badge-bg text-xs px-2 py-1 rounded">Ollama</span>
+                                <span class="badge-bg text-xs px-2 py-1 rounded">Alpaca</span>
+                                <span class="badge-bg text-xs px-2 py-1 rounded">yfinance</span>
+                                <span class="badge-bg text-xs px-2 py-1 rounded">SQLite</span>
+                                <span class="badge-bg text-xs px-2 py-1 rounded">Pytest</span>
+                            </div>
+                            <span class="view-project">View Details</span>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- Contact Section -->
@@ -434,12 +450,83 @@
         </div>
         <div class="modal-close" onclick="closeModal('investment-calculator')">×</div>
     </div>
+</div>
+
+<!-- Investment Spear Modal -->
+<div id="investment-spear" class="modal">
+    <div class="modal-content">
+        <div class="project-image" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100%&quot; height=&quot;100%&quot; viewBox=&quot;0 0 800 400&quot;><defs><linearGradient id=&quot;g&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;100%&quot;><stop offset=&quot;0%&quot; stop-color=&quot;%231e1b4b&quot;/><stop offset=&quot;100%&quot; stop-color=&quot;%234c1d95&quot;/></linearGradient></defs><rect fill=&quot;url(%23g)&quot; width=&quot;800&quot; height=&quot;400&quot;/><circle cx=&quot;640&quot; cy=&quot;110&quot; r=&quot;72&quot; fill=&quot;%23a78bfa&quot; fill-opacity=&quot;0.18&quot;/><circle cx=&quot;140&quot; cy=&quot;290&quot; r=&quot;110&quot; fill=&quot;%23a78bfa&quot; fill-opacity=&quot;0.10&quot;/><path d=&quot;M90 300 C170 250, 250 260, 320 220 S470 140, 560 170 S690 120, 740 95&quot; fill=&quot;none&quot; stroke=&quot;%23ede9fe&quot; stroke-width=&quot;10&quot; stroke-linecap=&quot;round&quot;/><rect x=&quot;115&quot; y=&quot;245&quot; width=&quot;92&quot; height=&quot;42&quot; rx=&quot;12&quot; fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.10&quot;/><rect x=&quot;230&quot; y=&quot;210&quot; width=&quot;92&quot; height=&quot;77&quot; rx=&quot;12&quot; fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.10&quot;/><rect x=&quot;345&quot; y=&quot;175&quot; width=&quot;92&quot; height=&quot;112&quot; rx=&quot;12&quot; fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.10&quot;/><text x=&quot;50%&quot; y=&quot;57%&quot; text-anchor=&quot;middle&quot; fill=&quot;white&quot; font-size=&quot;30&quot; font-family=&quot;Arial, sans-serif&quot; font-weight=&quot;bold&quot;>Investment Spear</text><text x=&quot;50%&quot; y=&quot;67%&quot; text-anchor=&quot;middle&quot; fill=&quot;%23e9d5ff&quot; font-size=&quot;16&quot; font-family=&quot;Arial, sans-serif&quot;>AI News Trading Bot</text></svg>');"></div>
+        <div class="p-6 md:p-8">
+            <h3 class="text-2xl font-bold text-primary mb-3">Investment Spear</h3>
+
+            <p class="text-secondary mb-4">An always-on Python trading system that monitors Yahoo Finance news, uses a local Ollama model for sentiment analysis, and places Alpaca paper trades with conservative, cash-only risk controls. It also includes a web dashboard for viewing portfolio activity, news, and AI-driven decisions.</p>
+
+            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Project Overview</h4>
+            <p class="text-secondary mb-4">Investment Spear is designed to react to changing market conditions instead of trading a fixed list of stocks. On startup, it uses AI market research to build a diversified symbol universe, then refreshes that universe daily while keeping any currently held positions in scope. The bot continuously pulls market news, analyzes it with local AI, and makes buy, sell, or hold decisions based on sentiment, portfolio context, and risk rules. A Flask-based dashboard provides visibility into the portfolio, news flow, and decision history.</p>
+            
+            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Key Features</h4>
+            <ul class="list-disc list-inside text-secondary mb-4">
+                <li><strong>AI-driven symbol selection</strong> and daily universe refresh</li>
+                <li><strong>News-based trading decisions</strong> using Yahoo Finance headlines</li>
+                <li><strong>BUY / SELL / HOLD logic</strong> with portfolio context and sentiment analysis</li>
+                <li><strong>Alpaca paper trading</strong> with cash-only execution</li>
+                <li><strong>Conservative risk management</strong> with reserve capital</li>
+                <li><strong>Live dashboard</strong> for portfolio, news, and decision tracking</li>
+                <li><strong>SQLite logging</strong> for trades and decisions</li>
+                <li><strong>Automated test suite</strong> for core trading behavior</li>
+            </ul>
+            
+            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Technical Implementation</h4>
+            <p class="text-secondary mb-4">The application is built around a continuous trading loop that coordinates market research, news ingestion, decision-making, and execution. A <strong>local Ollama model</strong> handles symbol research and sentiment analysis. <strong>Yahoo Finance</strong> provides the news input, <strong>Alpaca</strong> handles trade execution, and <strong>SQLite</strong> stores the bot’s activity. The dashboard exposes portfolio and analysis data through a <strong>Flask API</strong> and a browser UI. The architecture is modular, separating AI logic, broker access, data fetching, storage, and the live bot loop.</p>
+
+            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Technologies Used</h4>
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="badge-bg text-xs px-2 py-1 rounded">Python 3.11+</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">Ollama</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">Alpaca API</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">Yahoo Finance / yfinance</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">Flask</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">SQLite</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">Pytest</span>
+                <span class="badge-bg text-xs px-2 py-1 rounded">HTML/CSS/JS Frontend</span>
+            </div>
+            
+            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Advanced Features</h4>
+            <ul class="list-disc list-inside text-secondary mb-4">
+                <li><strong>Daily refresh</strong> of the tracked symbol universe</li>
+                <li><strong>Preservation of held positions</strong> during universe rotation</li>
+                <li><strong>Batch news scanning</strong> across the full symbol set</li>
+                <li><strong>Cash-only trading</strong> with no margin usage</li>
+                <li><strong>Local AI execution</strong> for privacy and lower external dependency</li>
+                <li><strong>Decision logging</strong> for later review and debugging</li>
+                <li><strong>Separate dashboard</strong> for monitoring live activity</li>
+                <li><strong>Automated tests</strong> covering bot behavior and supporting services</li>
+            </ul>
+            
+            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Quality Assurance</h4>
+            <ul class="list-disc list-inside text-secondary mb-4">
+                <li><strong>Regression tests</strong> for symbol universe merging and news batch processing</li>
+                <li><strong>Mocked tests</strong> for broker, data, and strategy logic</li>
+                <li><strong>Clear separation of concerns</strong> across bot, AI, broker, and data layers</li>
+                <li><strong>Conservative defaults</strong> to reduce trading risk</li>
+                <li><strong>Documentation</strong> for setup, runtime behavior, and bot options</li>
+            </ul>
+
+            <div class="flex justify-end mt-6">
+                <a href="/GUIDE.md" class="mr-3 bg-secondary hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-all duration-300">Read Guide</a>
+                <a href="https://github.com/Dr4l/investment-spear" target="_blank" rel="noopener noreferrer" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">View GitHub Repository</a>
+            </div>
+        </div>
+        <div class="modal-close" onclick="closeModal('investment-spear')">×</div>
+    </div>
+</div>
 
     <script>
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
+
         
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
