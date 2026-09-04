@@ -168,6 +168,14 @@
             border-top-left-radius: 0.5rem;
             border-top-right-radius: 0.5rem;
         }
+
+        .project-card-image {
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 0.375rem;
+            margin: -0.25rem -0.25rem 1.25rem;
+        }
         
         .view-project {
             position: absolute;
@@ -317,40 +325,8 @@
                 <!-- Projects Section -->
                 <section class="mb-10">
                     <h3 class="text-2xl font-bold text-primary mb-4">Projects</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="project-card rounded-lg p-6 border shadow-sm relative" onclick="openModal('investment-calculator')">
-                            <h4 class="text-xl font-semibold text-primary mb-2">Investment Calculator with Analytics</h4>
-                            <p class="text-tertiary mb-4">Comprehensive Java investment calculator featuring compound interest calculations, interactive growth charts, pie chart breakdowns, and detailed financial schedules. Supports multiple compounding frequencies, periodic contributions/withdrawals, and includes automated testing with CI/CD pipeline.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="badge-bg text-xs px-2 py-1 rounded">Java 11+</span>
-                                <span class="badge-bg text-xs px-2 py-1 rounded">Swing GUI</span>
-                                <span class="badge-bg text-xs px-2 py-1 rounded">JFreeChart</span>
-                                <span class="badge-bg text-xs px-2 py-1 rounded">BigDecimal Precision</span>
-                                <span class="badge-bg text-xs px-2 py-1 rounded">JUnit Testing</span>
-                                <span class="badge-bg text-xs px-2 py-1 rounded">GitHub Actions</span>
-                                <span class="badge-bg text-xs px-2 py-1 rounded">Maven</span>
-                                <span class="badge-bg text-xs px-2 py-1 rounded">Financial Analytics</span>
-                            </div>
-                            <span class="view-project">View Details</span>
-                        </div>
-
-                        <div class="project-card rounded-lg p-6 border shadow-sm relative" onclick="openModal('investment-spear')">
-                            <h4 class="text-xl font-semibold text-primary mb-2">Investment Spear</h4>
-                            <p class="text-tertiary mb-4">Always-on Python trading system using Yahoo Finance news, local Ollama sentiment analysis, and Alpaca paper trading. Includes a Flask dashboard and conservative cash-only risk management.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="badge-bg text-xs px-2 py-1 rounded">Python 3.11+</span>
-                                <span class="badge-bg text-xs px-2 py-1 rounded">Flask</span>
-                                <span class="badge-bg text-xs px-2 py-1 rounded">Ollama</span>
-                                <span class="badge-bg text-xs px-2 py-1 rounded">Alpaca</span>
-                                <span class="badge-bg text-xs px-2 py-1 rounded">yfinance</span>
-                                <span class="badge-bg text-xs px-2 py-1 rounded">SQLite</span>
-                                <span class="badge-bg text-xs px-2 py-1 rounded">Pytest</span>
-                            </div>
-                            <span class="view-project">View Details</span>
-                        </div>
-                    </div>
+                    <div id="project-list" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
                 </section>
-
                 <!-- Contact Section -->
                 <section>
                     <h3 class="text-2xl font-bold text-primary mb-4">Contact</h3>
@@ -374,184 +350,132 @@
 
             <!-- Footer -->
             <div class="card-bg p-6 border-t text-center text-tertiary">
-                <p>© 2026 Dragos Vrabie. All rights reserved.</p>
+                <p>&copy; 2026 Dragos Vrabie. All rights reserved.</p>
             </div>
         </div>
     </div>
-
-    <!-- Project Modals -->
-    <div id="investment-calculator" class="modal">
-    <div class="modal-content">
-        <div class="project-image" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100%&quot; height=&quot;100%&quot; viewBox=&quot;0 0 800 400&quot;><rect fill=&quot;%234ade80&quot; width=&quot;800&quot; height=&quot;400&quot;/><g fill-opacity=&quot;0.3&quot;><path fill=&quot;%23065f46&quot; d=&quot;M100 350 L200 300 L300 250 L400 200 L500 150 L600 100 L700 80 L700 350 Z&quot;/><circle fill=&quot;%23059669&quot; cx=&quot;400&quot; cy=&quot;200&quot; r=&quot;60&quot;/><text x=&quot;400&quot; y=&quot;210&quot; text-anchor=&quot;middle&quot; fill=&quot;white&quot; font-size=&quot;24&quot; font-weight=&quot;bold&quot;>$</text></g></svg>');"></div>
-        <div class="p-6">
-            <h3 class="text-2xl font-bold text-primary mb-2">Investment Calculator with Advanced Analytics</h3>
-            <p class="text-secondary mb-4">A comprehensive Java Swing application for calculating compound interest investments with interactive charts, detailed schedules, multi-currency support, and automated testing infrastructure.</p>
-            
-            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Project Overview</h4>
-            <p class="text-secondary mb-4">
-                This investment calculator provides users with powerful tools to plan their financial future. It features a modern GUI built with Java Swing and FlatLaf look-and-feel, offering comprehensive investment calculations with visual representations and detailed breakdowns. The application supports various compounding frequencies, contribution schedules, negative contributions (withdrawals), and includes a robust testing suite with CI/CD pipeline.
-            </p>
-            
-            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Key Features</h4>
-            <ul class="list-disc list-inside text-secondary mb-4">
-                <li>Compound interest calculations with multiple frequencies (daily, weekly, monthly, quarterly, annually)</li>
-                <li>Interactive investment growth charts and pie chart breakdowns showing final amount composition</li>
-                <li>Support for negative contributions (withdrawals) to model money taken out of investments</li>
-                <li>Support for regular contributions with flexible timing (beginning/end of period)</li>
-                <li>Multi-currency support (USD, EUR, GBP, JPY, CAD, AUD)</li>
-                <li>Comprehensive annual and monthly investment schedules with dynamic labeling</li>
-                <li>Chart export functionality (PNG/JPEG) with full-screen viewing mode</li>
-                <li>Automated test suite with detailed input/output validation</li>
-                <li>GitHub Actions CI/CD pipeline for continuous integration</li>
-                <li>Comprehensive documentation including calculation methodology</li>
-            </ul>
-            
-            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Technical Implementation</h4>
-            <p class="text-secondary mb-4">
-                The application uses a modular architecture with separate components for calculations, charting, and UI. It implements the Model-View-Controller pattern with dedicated classes for investment engine calculations, chart generation using JFreeChart, and a clean Swing-based user interface. The calculation engine uses BigDecimal arithmetic for financial precision and includes comprehensive validation against known mathematical formulas.
-            </p>
-            
-            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Technologies Used</h4>
-            <div class="flex flex-wrap gap-2 mb-4">
-                <span class="badge-bg text-xs px-2 py-1 rounded">Java 11+</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">Java Swing</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">FlatLaf Look and Feel</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">JFreeChart</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">BigDecimal Precision</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">Maven Build System</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">JUnit 5 Testing</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">GitHub Actions CI/CD</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">MVC Architecture</span>
-            </div>
-            
-            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Advanced Features</h4>
-            <ul class="list-disc list-inside text-secondary mb-4">
-                <li><strong>Dual Chart System:</strong> Growth over time charts and pie charts showing investment breakdown (starting amount, contributions, interest earned)</li>
-                <li><strong>Withdrawal Support:</strong> Handle negative contributions with appropriate UI feedback and calculations</li>
-                <li><strong>Precision Calculations:</strong> Uses BigDecimal with 10 decimal places to avoid rounding errors in financial calculations</li>
-                <li><strong>Comprehensive Testing:</strong> Automated test suite validating calculations against known formulas with detailed input/expected/actual output</li>
-                <li><strong>CI/CD Pipeline:</strong> GitHub Actions workflow for automated testing on every push and pull request</li>
-                <li><strong>Documentation:</strong> Detailed explanation of calculation differences between investment calculators and methodology transparency</li>
-                <li><strong>Export Capabilities:</strong> Save high-resolution chart images for reports and presentations</li>
-                <li><strong>Professional Architecture:</strong> Clean separation of concerns with testable, maintainable code structure</li>
-            </ul>
-            
-            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Quality Assurance</h4>
-            <ul class="list-disc list-inside text-secondary mb-4">
-                <li><strong>Automated Testing:</strong> Comprehensive JUnit test suite covering edge cases and mathematical validation</li>
-                <li><strong>Continuous Integration:</strong> GitHub Actions pipeline ensuring code quality on every commit</li>
-                <li><strong>Calculation Transparency:</strong> Detailed documentation explaining methodology and potential discrepancies with other calculators</li>
-                <li><strong>Input Validation:</strong> Robust error handling and user input validation with clear error messages</li>
-            </ul>
-            
-            <div class="flex justify-end mt-6">
-                <a href="https://github.com/Dr4l/investment-calculator" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">View GitHub Repository</a>
-            </div>
-        </div>
-        <div class="modal-close" onclick="closeModal('investment-calculator')">×</div>
-    </div>
-</div>
-
-<!-- Investment Spear Modal -->
-<div id="investment-spear" class="modal">
-    <div class="modal-content">
-        <div class="project-image" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100%&quot; height=&quot;100%&quot; viewBox=&quot;0 0 800 400&quot;><defs><linearGradient id=&quot;g&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;100%&quot;><stop offset=&quot;0%&quot; stop-color=&quot;%231e1b4b&quot;/><stop offset=&quot;100%&quot; stop-color=&quot;%234c1d95&quot;/></linearGradient></defs><rect fill=&quot;url(%23g)&quot; width=&quot;800&quot; height=&quot;400&quot;/><circle cx=&quot;640&quot; cy=&quot;110&quot; r=&quot;72&quot; fill=&quot;%23a78bfa&quot; fill-opacity=&quot;0.18&quot;/><circle cx=&quot;140&quot; cy=&quot;290&quot; r=&quot;110&quot; fill=&quot;%23a78bfa&quot; fill-opacity=&quot;0.10&quot;/><path d=&quot;M90 300 C170 250, 250 260, 320 220 S470 140, 560 170 S690 120, 740 95&quot; fill=&quot;none&quot; stroke=&quot;%23ede9fe&quot; stroke-width=&quot;10&quot; stroke-linecap=&quot;round&quot;/><rect x=&quot;115&quot; y=&quot;245&quot; width=&quot;92&quot; height=&quot;42&quot; rx=&quot;12&quot; fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.10&quot;/><rect x=&quot;230&quot; y=&quot;210&quot; width=&quot;92&quot; height=&quot;77&quot; rx=&quot;12&quot; fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.10&quot;/><rect x=&quot;345&quot; y=&quot;175&quot; width=&quot;92&quot; height=&quot;112&quot; rx=&quot;12&quot; fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.10&quot;/><text x=&quot;50%&quot; y=&quot;57%&quot; text-anchor=&quot;middle&quot; fill=&quot;white&quot; font-size=&quot;30&quot; font-family=&quot;Arial, sans-serif&quot; font-weight=&quot;bold&quot;>Investment Spear</text><text x=&quot;50%&quot; y=&quot;67%&quot; text-anchor=&quot;middle&quot; fill=&quot;%23e9d5ff&quot; font-size=&quot;16&quot; font-family=&quot;Arial, sans-serif&quot;>AI News Trading Bot</text></svg>');"></div>
-        <div class="p-6 md:p-8">
-            <h3 class="text-2xl font-bold text-primary mb-3">Investment Spear</h3>
-
-            <p class="text-secondary mb-4">An always-on Python trading system that monitors Yahoo Finance news, uses a local Ollama model for sentiment analysis, and places Alpaca paper trades with conservative, cash-only risk controls. It also includes a web dashboard for viewing portfolio activity, news, and AI-driven decisions.</p>
-
-            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Project Overview</h4>
-            <p class="text-secondary mb-4">Investment Spear is designed to react to changing market conditions instead of trading a fixed list of stocks. On startup, it uses AI market research to build a diversified symbol universe, then refreshes that universe daily while keeping any currently held positions in scope. The bot continuously pulls market news, analyzes it with local AI, and makes buy, sell, or hold decisions based on sentiment, portfolio context, and risk rules. A Flask-based dashboard provides visibility into the portfolio, news flow, and decision history.</p>
-            
-            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Key Features</h4>
-            <ul class="list-disc list-inside text-secondary mb-4">
-                <li><strong>AI-driven symbol selection</strong> and daily universe refresh</li>
-                <li><strong>News-based trading decisions</strong> using Yahoo Finance headlines</li>
-                <li><strong>BUY / SELL / HOLD logic</strong> with portfolio context and sentiment analysis</li>
-                <li><strong>Alpaca paper trading</strong> with cash-only execution</li>
-                <li><strong>Conservative risk management</strong> with reserve capital</li>
-                <li><strong>Live dashboard</strong> for portfolio, news, and decision tracking</li>
-                <li><strong>SQLite logging</strong> for trades and decisions</li>
-                <li><strong>Automated test suite</strong> for core trading behavior</li>
-            </ul>
-            
-            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Technical Implementation</h4>
-            <p class="text-secondary mb-4">The application is built around a continuous trading loop that coordinates market research, news ingestion, decision-making, and execution. A <strong>local Ollama model</strong> handles symbol research and sentiment analysis. <strong>Yahoo Finance</strong> provides the news input, <strong>Alpaca</strong> handles trade execution, and <strong>SQLite</strong> stores the bot’s activity. The dashboard exposes portfolio and analysis data through a <strong>Flask API</strong> and a browser UI. The architecture is modular, separating AI logic, broker access, data fetching, storage, and the live bot loop.</p>
-
-            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Technologies Used</h4>
-            <div class="flex flex-wrap gap-2 mb-4">
-                <span class="badge-bg text-xs px-2 py-1 rounded">Python 3.11+</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">Ollama</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">Alpaca API</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">Yahoo Finance / yfinance</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">Flask</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">SQLite</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">Pytest</span>
-                <span class="badge-bg text-xs px-2 py-1 rounded">HTML/CSS/JS Frontend</span>
-            </div>
-            
-            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Advanced Features</h4>
-            <ul class="list-disc list-inside text-secondary mb-4">
-                <li><strong>Daily refresh</strong> of the tracked symbol universe</li>
-                <li><strong>Preservation of held positions</strong> during universe rotation</li>
-                <li><strong>Batch news scanning</strong> across the full symbol set</li>
-                <li><strong>Cash-only trading</strong> with no margin usage</li>
-                <li><strong>Local AI execution</strong> for privacy and lower external dependency</li>
-                <li><strong>Decision logging</strong> for later review and debugging</li>
-                <li><strong>Separate dashboard</strong> for monitoring live activity</li>
-                <li><strong>Automated tests</strong> covering bot behavior and supporting services</li>
-            </ul>
-            
-            <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Quality Assurance</h4>
-            <ul class="list-disc list-inside text-secondary mb-4">
-                <li><strong>Regression tests</strong> for symbol universe merging and news batch processing</li>
-                <li><strong>Mocked tests</strong> for broker, data, and strategy logic</li>
-                <li><strong>Clear separation of concerns</strong> across bot, AI, broker, and data layers</li>
-                <li><strong>Conservative defaults</strong> to reduce trading risk</li>
-                <li><strong>Documentation</strong> for setup, runtime behavior, and bot options</li>
-            </ul>
-
-            <div class="flex justify-end mt-6">
-                <a href="https://github.com/Dr4l/investment-spear/blob/main/GUIDE.md" target="_blank" rel="noopener noreferrer" class="mr-3 bg-secondary hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-all duration-300">Read Guide</a>
-                <a href="https://github.com/Dr4l/investment-spear" target="_blank" rel="noopener noreferrer" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">View GitHub Repository</a>
-            </div>
-        </div>
-        <div class="modal-close" onclick="closeModal('investment-spear')">×</div>
-    </div>
-</div>
 
     <script>
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-            document.body.style.overflow = 'hidden';
+        const projects = [
+            {
+                id: 'investment-calculator',
+                title: 'Investment Calculator with Analytics',
+                summary: 'Comprehensive Java investment calculator featuring compound interest calculations, interactive growth charts, pie chart breakdowns, and detailed financial schedules. Supports multiple compounding frequencies, periodic contributions/withdrawals, and includes automated testing with CI/CD pipeline.',
+                tags: ['Java 11+', 'Swing GUI', 'JFreeChart', 'BigDecimal Precision', 'JUnit Testing', 'GitHub Actions', 'Maven', 'Financial Analytics'],
+                image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'><rect fill='%234ade80' width='800' height='400'/><path fill='%23065f46' fill-opacity='.3' d='M100 350 L200 300 L300 250 L400 200 L500 150 L600 100 L700 80 L700 350 Z'/><circle fill='%23059669' fill-opacity='.3' cx='400' cy='200' r='60'/><text x='400' y='210' text-anchor='middle' fill='white' font-size='24' font-weight='bold'>$</text></svg>",
+                description: 'A comprehensive Java Swing application for calculating compound interest investments with interactive charts, detailed schedules, multi-currency support, and automated testing infrastructure.',
+                sections: [
+                    ['Project Overview', 'This investment calculator provides users with powerful tools to plan their financial future. It features a modern GUI built with Java Swing and FlatLaf look-and-feel, offering comprehensive investment calculations with visual representations and detailed breakdowns. The application supports various compounding frequencies, contribution schedules, negative contributions (withdrawals), and includes a robust testing suite with CI/CD pipeline.'],
+                    ['Key Features', ['Compound interest calculations with multiple frequencies (daily, weekly, monthly, quarterly, annually)', 'Interactive investment growth charts and pie chart breakdowns showing final amount composition', 'Support for negative contributions (withdrawals) to model money taken out of investments', 'Support for regular contributions with flexible timing (beginning/end of period)', 'Multi-currency support (USD, EUR, GBP, JPY, CAD, AUD)', 'Comprehensive annual and monthly investment schedules with dynamic labeling', 'Chart export functionality (PNG/JPEG) with full-screen viewing mode', 'Automated test suite with detailed input/output validation', 'GitHub Actions CI/CD pipeline for continuous integration', 'Comprehensive documentation including calculation methodology']],
+                    ['Technical Implementation', 'The application uses a modular architecture with separate components for calculations, charting, and UI. It implements the Model-View-Controller pattern with dedicated classes for investment engine calculations, chart generation using JFreeChart, and a clean Swing-based user interface. The calculation engine uses BigDecimal arithmetic for financial precision and includes comprehensive validation against known mathematical formulas.'],
+                    ['Technologies Used', ['Java 11+', 'Java Swing', 'FlatLaf Look and Feel', 'JFreeChart', 'BigDecimal Precision', 'Maven Build System', 'JUnit 5 Testing', 'GitHub Actions CI/CD', 'MVC Architecture']],
+                    ['Advanced Features', ['Dual Chart System: Growth over time charts and pie charts showing investment breakdown (starting amount, contributions, interest earned)', 'Withdrawal Support: Handle negative contributions with appropriate UI feedback and calculations', 'Precision Calculations: Uses BigDecimal with 10 decimal places to avoid rounding errors in financial calculations', 'Comprehensive Testing: Automated test suite validating calculations against known formulas with detailed input/expected/actual output', 'CI/CD Pipeline: GitHub Actions workflow for automated testing on every push and pull request', 'Documentation: Detailed explanation of calculation differences between investment calculators and methodology transparency', 'Export Capabilities: Save high-resolution chart images for reports and presentations', 'Professional Architecture: Clean separation of concerns with testable, maintainable code structure']],
+                    ['Quality Assurance', ['Automated Testing: Comprehensive JUnit test suite covering edge cases and mathematical validation', 'Continuous Integration: GitHub Actions pipeline ensuring code quality on every commit', 'Calculation Transparency: Detailed documentation explaining methodology and potential discrepancies with other calculators', 'Input Validation: Robust error handling and user input validation with clear error messages']]
+                ],
+                links: [{ label: 'View GitHub Repository', url: 'https://github.com/Dr4l/investment-calculator', className: 'bg-green-600 hover:bg-green-700' }]
+            },
+            {
+                id: 'investment-spear',
+                title: 'Investment Spear',
+                summary: 'Always-on Python trading system using Yahoo Finance news, local Ollama sentiment analysis, and Alpaca paper trading. Includes a Flask dashboard and conservative cash-only risk management.',
+                tags: ['Python 3.11+', 'Flask', 'Ollama', 'Alpaca', 'yfinance', 'SQLite', 'Pytest'],
+                image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%231e1b4b'/><stop offset='100%' stop-color='%234c1d95'/></linearGradient></defs><rect fill='url(%23g)' width='800' height='400'/><path d='M90 300 C170 250 250 260 320 220 S470 140 560 170 S690 120 740 95' fill='none' stroke='%23ede9fe' stroke-width='10' stroke-linecap='round'/><text x='50%' y='57%' text-anchor='middle' fill='white' font-size='30' font-family='Arial' font-weight='bold'>Investment Spear</text><text x='50%' y='67%' text-anchor='middle' fill='%23e9d5ff' font-size='16' font-family='Arial'>AI News Trading Bot</text></svg>",
+                description: 'An always-on Python trading system that monitors Yahoo Finance news, uses a local Ollama model for sentiment analysis, and places Alpaca paper trades with conservative, cash-only risk controls. It also includes a web dashboard for viewing portfolio activity, news, and AI-driven decisions.',
+                sections: [
+                    ['Project Overview', 'Investment Spear reacts to changing market conditions instead of trading a fixed list of stocks. On startup, it uses AI market research to build a diversified symbol universe, then refreshes that universe daily while keeping currently held positions in scope. The bot continuously pulls market news, analyzes it with local AI, and makes buy, sell, or hold decisions based on sentiment, portfolio context, and risk rules.'],
+                    ['Key Features', ['AI-driven symbol selection and daily universe refresh', 'News-based trading decisions using Yahoo Finance headlines', 'BUY / SELL / HOLD logic with portfolio context and sentiment analysis', 'Alpaca paper trading with cash-only execution', 'Conservative risk management with reserve capital', 'Live dashboard for portfolio, news, and decision tracking', 'SQLite logging for trades and decisions', 'Automated test suite for core trading behavior']],
+                    ['Technical Implementation', 'The application is built around a continuous trading loop that coordinates market research, news ingestion, decision-making, and execution. A <strong>local Ollama model</strong> handles symbol research and sentiment analysis. <strong>Yahoo Finance</strong> provides the news input, <strong>Alpaca</strong> handles trade execution, and <strong>SQLite</strong> stores the bot activity. The dashboard exposes portfolio and analysis data through a <strong>Flask API</strong> and a browser UI. The architecture is modular, separating AI logic, broker access, data fetching, storage, and the live bot loop.'],
+                    ['Technologies Used', ['Python 3.11+', 'Ollama', 'Alpaca API', 'Yahoo Finance / yfinance', 'Flask', 'SQLite', 'Pytest', 'HTML/CSS/JS Frontend']],
+                    ['Advanced Features', ['Daily refresh: Refreshes the tracked symbol universe every day', 'Position preservation: Keeps held positions during universe rotation', 'Batch news scanning: Scans news across the full symbol set', 'Cash-only trading: Uses no margin', 'Local AI execution: Provides privacy and lower external dependency', 'Decision logging: Stores decisions for later review and debugging', 'Separate dashboard: Monitors live activity', 'Automated tests: Covers bot behavior and supporting services']],
+                    ['Quality Assurance', ['Regression tests: Covers symbol universe merging and news batch processing', 'Mocked tests: Covers broker, data, and strategy logic', 'Separation of concerns: Keeps bot, AI, broker, and data layers independent', 'Conservative defaults: Reduces trading risk', 'Documentation: Covers setup, runtime behavior, and bot options']]
+                ],
+                links: [{ label: 'Read Guide', url: 'https://github.com/Dr4l/investment-spear/blob/main/GUIDE.md', className: 'bg-secondary hover:bg-gray-700' }, { label: 'View GitHub Repository', url: 'https://github.com/Dr4l/investment-spear', className: 'bg-purple-600 hover:bg-purple-700' }]
+            }
+        ];
+
+        const projectList = document.getElementById('project-list');
+
+        function renderTags(tags) {
+            return tags.map(tag => `<span class="badge-bg text-xs px-2 py-1 rounded">${tag}</span>`).join('');
         }
 
-        
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
+        function renderProjectCard(project) {
+            const imageUrl = project.image.replace(/'/g, '%27');
+            return `<button type="button" class="project-card rounded-lg p-6 border shadow-sm relative text-left w-full" data-modal-target="${project.id}">
+                <div class="project-card-image" style="background-image: url('${imageUrl}')" aria-hidden="true"></div>
+                <h4 class="text-xl font-semibold text-primary mb-2">${project.title}</h4>
+                <p class="text-tertiary mb-4">${project.summary}</p>
+                <div class="flex flex-wrap gap-2">${renderTags(project.tags)}</div>
+                <span class="view-project">View Details</span>
+            </button>`;
+        }
+
+        function renderSection([heading, content]) {
+            if (heading === 'Technologies Used') {
+                return `<h4 class="text-lg font-semibold text-primary mt-4 mb-2">${heading}</h4><div class="flex flex-wrap gap-2 mb-4">${renderTags(content)}</div>`;
+            }
+
+            if (Array.isArray(content)) {
+                const items = content.map(item => {
+                    const separatorIndex = item.indexOf(':');
+                    if (separatorIndex === -1) return `<li>${item}</li>`;
+
+                    const label = item.slice(0, separatorIndex);
+                    const description = item.slice(separatorIndex + 1).trim();
+                    return `<li><strong>${label}:</strong> ${description}</li>`;
+                }).join('');
+                return `<h4 class="text-lg font-semibold text-primary mt-4 mb-2">${heading}</h4><ul class="list-disc list-inside text-secondary mb-4">${items}</ul>`;
+            }
+            return `<h4 class="text-lg font-semibold text-primary mt-4 mb-2">${heading}</h4><p class="text-secondary mb-4">${content}</p>`;
+        }
+
+        function renderModal(project) {
+            const imageUrl = project.image.replace(/'/g, '%27');
+            return `<div id="${project.id}" class="modal" aria-hidden="true">
+                <div class="modal-content">
+                    <div class="project-image" style="background-image: url('${imageUrl}')"></div>
+                    <div class="p-6 md:p-8">
+                        <h3 class="text-2xl font-bold text-primary mb-3">${project.title}</h3>
+                        <p class="text-secondary mb-4">${project.description}</p>
+                        ${project.sections.map(renderSection).join('')}
+                        <div class="flex flex-wrap justify-end gap-3 mt-6">${project.links.map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="${link.className} text-white px-4 py-2 rounded-lg transition-all duration-300">${link.label}</a>`).join('')}</div>
+                    </div>
+                    <button type="button" class="modal-close" data-modal-close="${project.id}" aria-label="Close ${project.title} modal">&times;</button>
+                </div>
+            </div>`;
+        }
+
+        projectList.innerHTML = projects.map(renderProjectCard).join('');
+        document.body.insertAdjacentHTML('beforeend', projects.map(renderModal).join(''));
+
+        function closeOpenModals() {
+            document.querySelectorAll('.modal[aria-hidden="false"]').forEach(modal => {
+                modal.style.display = 'none';
+                modal.setAttribute('aria-hidden', 'true');
+            });
             document.body.style.overflow = 'auto';
         }
-        
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const modals = document.getElementsByClassName('modal');
-                for (let i = 0; i < modals.length; i++) {
-                    if (modals[i].style.display === 'block') {
-                        modals[i].style.display = 'none';
-                        document.body.style.overflow = 'auto';
-                    }
+
+        document.addEventListener('click', event => {
+            const target = event.target.closest('[data-modal-target], [data-modal-close]');
+            if (target) {
+                const modalId = target.dataset.modalTarget || target.dataset.modalClose;
+                const modal = document.getElementById(modalId);
+                const isOpening = target.hasAttribute('data-modal-target');
+                if (isOpening) {
+                    modal.style.display = 'block';
+                    modal.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    closeOpenModals();
                 }
+            } else if (event.target.classList.contains('modal')) {
+                closeOpenModals();
             }
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeOpenModals();
         });
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'964df264b202bc1a',t:'MTc1MzQ3MDUxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
