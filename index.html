@@ -390,6 +390,27 @@
                     ['Quality Assurance', ['Regression tests: Covers symbol universe merging and news batch processing', 'Mocked tests: Covers broker, data, and strategy logic', 'Separation of concerns: Keeps bot, AI, broker, and data layers independent', 'Conservative defaults: Reduces trading risk', 'Documentation: Covers setup, runtime behavior, and bot options']]
                 ],
                 links: [{ label: 'Read Guide', url: 'https://github.com/Dr4l/investment-spear/blob/main/GUIDE.md', className: 'bg-secondary hover:bg-gray-700' }, { label: 'View GitHub Repository', url: 'https://github.com/Dr4l/investment-spear', className: 'bg-purple-600 hover:bg-purple-700' }]
+            },
+            {
+                id: 'secure-dice-discord-bot',
+                title: 'Secure Dice Discord Bot',
+                summary: 'Lightweight Discord bot for fair, cryptographically secure dice rolls with slash commands, flexible dice notation, abuse limits, automated tests, one-step launcher scripts, and live cloud hosting.',
+                tags: ['Python 3.11+', 'discord.py 2.6', 'Discord Slash Commands', 'secrets CSPRNG', 'unittest', 'Oracle Cloud'],
+                image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'><defs><linearGradient id='dice-bg' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%231e1b4b'/><stop offset='100%' stop-color='%237c3aed'/></linearGradient></defs><rect fill='url(%23dice-bg)' width='800' height='400'/><rect x='285' y='75' width='230' height='230' rx='34' fill='%23f5f3ff' transform='rotate(8 400 190)'/><circle cx='350' cy='140' r='18' fill='%234c1d95'/><circle cx='450' cy='140' r='18' fill='%234c1d95'/><circle cx='350' cy='240' r='18' fill='%234c1d95'/><circle cx='450' cy='240' r='18' fill='%234c1d95'/><text x='400' y='355' text-anchor='middle' fill='white' font-size='28' font-family='Arial' font-weight='bold'></text></svg>",
+                description: 'DiceBot is a stateless Discord bot that delivers trustworthy dice rolls for tabletop games, giveaways, and quick decisions. It is deployed live on Oracle Cloud at dice.vdra.dev and keeps its footprint small by storing no user data or persistent state.',
+                sections: [
+                    ['Project Overview', 'DiceBot responds to Discord slash commands such as /roll and /dicehelp. The default /roll command rolls a d20, while the parser supports common dice and custom positive-sided dice for more flexible tabletop notation. Building the bot also gave me hands-on experience working with the Discord API, including slash commands, application scopes, and bot configuration.'],
+                    ['Key Features', ['Cryptographically secure rolls using Python secrets.randbelow', 'Slash commands with a d20 default for quick rolls', 'Dice notation with multiple groups and modifiers, such as 2d6+3 or 2d6+1d8-2', 'Common dice from d4 through d100 plus unusual dice such as d7 and d30', 'Built-in /dicehelp command with usage examples', 'Safety limits of 100 dice, 20 groups, and 1,000,000 sides per die', 'Stateless operation with no database or persistent user data']],
+                    ['Technical Implementation', 'Expressions are parsed into dice groups and flat modifiers, validated against resource limits, and rolled one die at a time through the secrets module. Configuration uses environment variables documented in .env.example, while launcher scripts create a virtual environment, install dependencies, configure the token, and start the bot.'],
+                    ['Deployment and Hosting', 'The bot is deployed and running live on Oracle Cloud at dice.vdra.dev. This was my first experience hosting a bot in a real cloud environment, including managing the Discord token securely, configuring the bot with the bot and applications.commands scopes, and keeping a lightweight process running reliably.'],
+                    ['Technologies Used', ['Python 3.11+', 'discord.py 2.6', 'Discord Slash Commands', 'secrets CSPRNG', 'Python unittest', 'python-dotenv-style .env configuration', 'Virtual Environments (venv)', 'Batch and Shell scripting', 'Oracle Cloud Hosting']],
+                    ['Advanced Features', ['True Fairness: Uses an operating-system cryptographic random source for unpredictable and unbiased results', 'Expression Parsing: Combines multiple dice groups and positive or negative modifiers', 'Abuse Protection: Hard limits protect the host from oversized or malicious requests', 'Zero-State Architecture: No database or stored user data reduces maintenance and attack surface', 'Guided Onboarding: Cross-platform run.bat and run.sh scripts automate setup', 'Self-Documenting Bot: /dicehelp teaches users the notation inside Discord']],
+                    ['Quality Assurance', ['Automated unit tests built with Python unittest', 'Secret configuration kept out of version control through .gitignore', 'Lightweight deployment designed for reliable Oracle Cloud hosting', 'Practical experience integrating and deploying against the Discord API']]
+                ],
+                links: [
+                    { label: 'View GitHub Repository', url: 'https://github.com/Dr4l/DiceBot', className: 'bg-purple-600 hover:bg-purple-700' },
+                    { label: 'Open Live Bot Site', url: 'https://dice.vdra.dev', className: 'bg-indigo-600 hover:bg-indigo-700' }
+                ]
             }
         ];
 
